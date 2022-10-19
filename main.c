@@ -1,15 +1,20 @@
 #include <stdio.h>
 
+
+void reverse_sub(char* arr, int start, int end)
+{
+	for (int i = 0; i < end-start-i; i++)
+	{
+		arr[start+i] = arr[start+i] + arr[end-i];
+		arr[end-i] = arr[start+i] - arr[end-i];
+		arr[start+i] = arr[start+i] - arr[end-i];
+	}
+}
+
 void reverse(char* arr, int size)
 {
-	size = size - 1;
-	for (int i = 0; i < size-i; i++)
-	{
-		arr[i] = arr[i] + arr[size-i];
-		arr[size-i] = arr[i] - arr[size-i];
-		arr[i] = arr[i] - arr[size-i];
-	}
-	arr[size+1] = '\0';
+	reverse_sub(arr, 0, size-1);
+	arr[size] = '\0';
 }
 
 
@@ -27,5 +32,11 @@ int main()
 	printf("%s\t", arr2);
 	reverse(arr2, 12);
 	printf("%s\n", arr2);
+
+	char arr3[] = "This word is reversed";
+	
+	printf("%s\t", arr3);
+	reverse_sub(arr3, 5, 8);
+	printf("%s\n", arr3);
 	
 }
