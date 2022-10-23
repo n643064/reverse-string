@@ -5,9 +5,9 @@ void reverse_sub(char* arr, int start, int end)
 {
 	for (int i = 0; i < end-start-i; i++)
 	{
-		arr[start+i] = arr[start+i] + arr[end-i];
+		arr[start+i] += arr[end-i];
 		arr[end-i] = arr[start+i] - arr[end-i];
-		arr[start+i] = arr[start+i] - arr[end-i];
+		arr[start+i] -= arr[end-i];
 	}
 }
 
@@ -38,5 +38,5 @@ int main()
 	printf("%s\t", arr3);
 	reverse_sub(arr3, 5, 8);
 	printf("%s\n", arr3);
-	
+
 }
