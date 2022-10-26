@@ -1,13 +1,20 @@
 #include <stdio.h>
 
+void swap_chars(char* arr, int a, int b)
+{
+	arr[a] += arr[b];
+	arr[b] = arr[a] - arr[b];
+	arr[a] -= arr[b];
+}
 
 void reverse_sub(char* arr, int start, int end)
 {
 	for (int i = 0; i < end-start-i; i++)
 	{
-		arr[start+i] += arr[end-i];
-		arr[end-i] = arr[start+i] - arr[end-i];
-		arr[start+i] -= arr[end-i];
+		swap_chars(arr, start+i, end-i);
+	//	arr[start+i] += arr[end-i];
+	//	arr[end-i] = arr[start+i] - arr[end-i];
+	//	arr[start+i] -= arr[end-i];
 	}
 }
 
@@ -38,5 +45,10 @@ int main()
 	printf("%s\t", arr3);
 	reverse_sub(arr3, 5, 8);
 	printf("%s\n", arr3);
+
+	char arr4[] = "abcdefg";
+	printf("%s\t", arr4);
+	swap_chars(arr4, 0, 6);
+	printf("%s\n", arr4);
 
 }
